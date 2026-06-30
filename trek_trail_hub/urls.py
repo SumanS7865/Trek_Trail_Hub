@@ -18,8 +18,22 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from marketplace import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.home, name="home"),
+    # for gear detail
+    path("gear/<int:id>?", views.gear_detail, name="gear_detail"),
+    # for package detail
+    path("package/<int:id>/", views.package_detail, name="package_detail"),
+    # for explore packages
+    path("packages/", views.explore_packages, name="explore_packages"),
+    path("add-to-cart/<int:gear_id>/", views.add_to_cart, name="add_to_cart"),
+    path("cart/", views.cart_view, name="cart_view"),
 ]
+
+# यो तलको लाइनले फोटोलाई वेबसाइटमा देखाउन मद्दत गर्छ
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trek & Trail Hub | Epic Adventures Await</title>
+    <!-- Google Fonts & FontAwesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* 🌲 Advanced Adventure Theme Variables 🌲 */
+        :root {
+            --dark-bg: #121212;
+            --card-bg: #1f1f1f;
+            --accent-orange: #ff5722;
+            --accent-hover: #e64a19;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --border-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Top Bar --- */
+        .top-bar {
+            background-color: #000;
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .top-bar-left i,
+        .top-bar-right i {
+            color: var(--accent-orange);
+            margin-right: 5px;
+        }
+
+        .top-bar-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* --- Navbar --- */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 25px;
+            outline: none;
+            width: 250px;
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 15px;
+            top: 12px;
+            color: var(--accent-orange);
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        .cart-icon:hover {
+            color: var(--accent-orange);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--accent-orange);
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+
+        /* --- Hero Slider Section --- */
+        .hero {
+            position: relative;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(18, 18, 18, 1)), url('https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=2000&auto=format&fit=crop') no-repeat center center/cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .hero-subtitle {
+            color: var(--accent-orange);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+        }
+
+        /* --- Features Strip --- */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            background-color: var(--card-bg);
+            padding: 40px 5%;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-box {
+            text-align: center;
+            width: 22%;
+        }
+
+        .feature-box i {
+            font-size: 35px;
+            color: var(--accent-orange);
+            margin-bottom: 15px;
+        }
+
+        .feature-box h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .feature-box p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* --- Layout Common --- */
+        .section {
+            padding: 80px 5%;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 800;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-orange);
+        }
+
+        .view-all {
+            color: var(--accent-orange);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .view-all:hover {
+            color: white;
+        }
+
+        /* --- Product Grid (Gears & Packages) --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.4s;
+            position: relative;
+            border: 1px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-orange);
+            box-shadow: 0 10px 20px rgba(255, 87, 34, 0.1);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent-orange);
+            color: white;
+            padding: 5px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 20px;
+            z-index: 2;
+        }
+
+        .product-img-wrap {
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .product-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .product-card:hover .product-img-wrap img {
+            transform: scale(1.1);
+        }
+
+        .card-actions {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.4s;
+            z-index: 3;
+        }
+
+        .product-card:hover .card-actions {
+            bottom: 20px;
+        }
+
+        .action-btn {
+            background: white;
+            color: var(--dark-bg);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .action-btn:hover {
+            background: var(--accent-orange);
+            color: white;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-category {
+            color: var(--accent-orange);
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .product-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .price span {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* --- Promo Banner --- */
+        .promo-banner {
+            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(255, 87, 34, 0.7)), url('https://images.unsplash.com/photo-1522163182402-834f871fd851?q=80&w=2000&auto=format&fit=crop') fixed center/cover;
+            padding: 100px 5%;
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .promo-banner h2 {
+            font-size: 45px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .promo-banner p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #0a0a0a;
+            padding: 80px 5% 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-orange);
+        }
+
+        .footer-col p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-orange);
+            padding-left: 8px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-orange);
+            transform: translateY(-3px);
+        }
+
+        .newsletter input {
+            width: 100%;
+            padding: 12px 15px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .newsletter button {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .newsletter button:hover {
+            background: var(--accent-hover);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <span><i class="fas fa-envelope"></i> support@trektrailhub.com</span>
+            <span style="margin-left: 20px;"><i class="fas fa-phone"></i> +977 9800000000</span>
+        </div>
+        <div class="top-bar-right">
+            <span><i class="fas fa-map-marker-alt"></i> Thamel, Kathmandu</span>
+            <a href="#">Track Order</a>
+        </div>
+    </div>
+
+    <!-- Main Navbar -->
+    <header>
+        <a href="/" class="logo">Trek<span>Trail</span> Hub.</a>
+
+        <nav class="nav-links">
+            <a href="/" style="color: var(--accent-orange);">Home</a>
+            <a href="/?#gears">Rent Gears</a>
+            <a href="/?#packages">Travel Packages</a>
+            <a href="#">Vendors</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <div class="nav-actions">
+
+            <form class="search-box" action="/packages/" method="GET">
+                <input type="text" name="q" placeholder="Search gears, treks...">
+
+                <button type="submit"
+                    style="background: none; border: none; color: inherit; cursor: pointer; padding: 0;">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+            <a href="#" class="cart-icon">
+                <i class="far fa-heart"></i>
+            </a>
+            <a href="#" class="cart-icon">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge">3</span>
+            </a>
+            <a href="#" class="btn btn-primary" style="padding: 10px 20px; font-size: 14px;">Sign In</a>
+        </div>
+    </header>
+
+    <!-- Featured Packages Section -->
+    <section class="section" id="packages">
+        <div class="section-header">
+            <div>
+                <h2 class="section-title">Popular Expeditions</h2>
+                <p style="color: var(--text-muted); margin-top: 10px;">Curated travel packages by certified guides.</p>
+            </div>
+            <a href="/packages/" class="view-all">Explore Packages <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="product-grid">
+            {% for package in packages %}
+            <div class="product-card">
+                <div class="product-img-wrap">
+                    <img src="{% if package.image %}{{ package.image.url }}{% else %}https://images.unsplash.com/photo-1543731068-7e0f5beff43a?q=80&w=600&auto=format&fit=crop{% endif %}"
+                        alt="{{ package.title }}">
+                </div>
+                <div class="product-info">
+                    <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                        <span class="product-category"><i class="far fa-clock"></i>
+                            {{package.duration_days|default:"7"}} Days</span>
+                        <span class="product-category"><i class="fas fa-map-marker-alt"></i>
+                            {{package.destination|default:"Pokhara" }}</span>
+                    </div>
+
+                    <h3 class="product-title">{{ package.title|default:"Annapurna Base Camp Trek" }}</h3>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 15px;">Includes Guide, Meals &
+                        Accommodation.</p>
+
+                    <div class="product-meta">
+                        <div class="price">Rs. {{ package.total_price|default:"25,000" }}</div>
+
+                        <a href="{% url 'package_detail' package.id %}" class="btn btn-primary"
+                            style="padding: 8px 15px; font-size: 13px; border-radius: 5px;">Book Trip</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            {% endfor %}
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="/" class="logo" style="font-size: 24px;">Trek<span>Trail</span> Hub.</a>
+                <p style="margin-top: 15px;">Your ultimate partner for conquering the Himalayas. We provide top-tier
+                    equipment rental and seamless travel package bookings.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Rent Trekking Gears</a></li>
+                    <li><a href="#">Travel Packages</a></li>
+                    <li><a href="#">Become a Vendor</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Rental Policy</a></li>
+                    <li><a href="#">Cancellation Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col newsletter">
+                <h4>Newsletter</h4>
+                <p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
+                <form action="#">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Trek & Trail Hub. All Rights Reserved. Crafted for Adventures.</p>
+            <div style="margin-top: 10px; font-size: 24px; color: white;">
+                <i class="fab fa-cc-visa" style="margin: 0 5px;"></i>
+                <i class="fab fa-cc-mastercard" style="margin: 0 5px;"></i>
+                <i class="fas fa-money-bill-wave" style="margin: 0 5px;" title="Cash on Delivery"></i>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
